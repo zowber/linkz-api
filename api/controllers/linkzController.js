@@ -42,6 +42,10 @@ exports.delete_link = function(req, res) {
 	}, function(err, link) {
 		if (err)
 			res.send(err);
-		res.json({ message: 'Link deleted'});
+			Link.find({}, function (err, link) {
+				if (err)
+					res.send(err);
+				res.json(link);
+			});
 	});
 };

@@ -11,6 +11,9 @@ var LinkzSchema = new Schema({
 		type: String,
 		required: 'A url is required'
 	},
+	labels: {
+		type: [{ id: Number, name: String}]
+	},
 	Created_date: {
 		type: Date,
 		default: Date.now
