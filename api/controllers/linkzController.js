@@ -1,7 +1,7 @@
 'use strict';
 
 var mongoose = require('mongoose'),
-	Link = mongoose.model('Linkz');
+	Link = mongoose.model('Link');
 
 exports.list_all_linkz = function(req, res) {
 	Link.find({}, function (err, link) {
