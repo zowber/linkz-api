@@ -1,28 +1,41 @@
-var express = require('express'),
-	app = express(),
-	port = process.env.PORT || 3000,
-	mongoose = require('mongoose'),
-	Link = require('./api/models/linkzModel');
-	bodyParser = require('body-parser');
+var express = require("express"),
+  app = express(),
+  port = process.env.PORT || 3000,
+  mongoose = require("mongoose"),
+  Link = require("./api/models/linkModel");
+  bodyParser = require("body-parser"),
+  dotenv = require("dotenv").config();
 
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost/linkzdb', { useMongoClient: true });
+mongoose.connect(
+  "mongodb+srv://" +
+    process.env.DB_USER +
+    ":" +
+    process.env.DB_PASS +
+    "@" +
+    process.env.DB_HOST +
+    "/" +
+    process.env.DB_NAME
+);
+
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 // https://enable-cors.org/server_expressjs.html
 app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Methods", "GET, POST, DELETE");
+  res.header("Access-Control-Allow-Methods", "GET, POST, PUT ,DELETE");
   res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
   next();
 });
 
-var routes = require('./api/routes/linkzRoutes');
+var routes = require("./api/routes/linkzRoutes");
 routes(app);
 
 app.listen(port);
 
-console.log('linkz API server started on port ' + port);
-
+console.log("linkz API server started on port " + port);

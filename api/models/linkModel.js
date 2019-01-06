@@ -2,7 +2,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var LinkzSchema = new Schema({
+var LinkSchema = new Schema({
 	name: {
 		type: String,
 		required: 'A name is required'
@@ -20,4 +20,4 @@ var LinkzSchema = new Schema({
 	}
 });
 
-module.exports = mongoose.model('Linkz', LinkzSchema);
+module.exports = mongoose.model('Link', LinkSchema);
