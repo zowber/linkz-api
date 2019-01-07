@@ -2,10 +2,12 @@ var express = require("express"),
   app = express(),
   port = process.env.PORT || 3000,
   mongoose = require("mongoose"),
-  Link = require("./api/models/linkModel");
-  bodyParser = require("body-parser");
-  
-  require("dotenv").config();
+  Link = require("./api/models/linkModel"),
+  Routes = require("./api/routes/linkzRoutes"),
+  bodyParser = require("body-parser"),
+  dotenv = require("dotenv");
+
+dotenv.config();
 
 mongoose.Promise = global.Promise;
 mongoose.connect(
@@ -18,7 +20,6 @@ mongoose.connect(
     "/" +
     process.env.DB_NAME
 );
-
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -34,8 +35,7 @@ app.use(function(req, res, next) {
   next();
 });
 
-var routes = require("./api/routes/linkzRoutes");
-routes(app);
+Routes(app);
 
 app.listen(port);
 
