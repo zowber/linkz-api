@@ -3,8 +3,9 @@ var express = require("express"),
   port = process.env.PORT || 3000,
   mongoose = require("mongoose"),
   Link = require("./api/models/linkModel");
-  bodyParser = require("body-parser"),
-  dotenv = require("dotenv").config();
+  bodyParser = require("body-parser");
+  
+  require("dotenv").config();
 
 mongoose.Promise = global.Promise;
 mongoose.connect(
