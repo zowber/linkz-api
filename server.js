@@ -5,11 +5,11 @@ var express = require("express"),
   Link = require("./api/models/linkModel"),
   Routes = require("./api/routes/linkzRoutes"),
   bodyParser = require("body-parser"),
-  dotenv = require("dotenv");
+  dotenv = require("dotenv")
 
-dotenv.config();
+dotenv.config()
 
-mongoose.Promise = global.Promise;
+mongoose.Promise = global.Promise
 mongoose.connect(
   "mongodb+srv://" +
     process.env.DB_USER +
@@ -19,24 +19,24 @@ mongoose.connect(
     process.env.DB_HOST +
     "/" +
     process.env.DB_NAME
-);
+)
 
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.json())
 
 // https://enable-cors.org/server_expressjs.html
 app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Methods", "GET, POST, PUT ,DELETE");
-  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Methods", "GET, POST, PUT ,DELETE")
+  res.header("Access-Control-Allow-Origin", "*")
   res.header(
     "Access-Control-Allow-Headers",
     "Origin, X-Requested-With, Content-Type, Accept"
-  );
-  next();
-});
+  )
+  next()
+})
 
-Routes(app);
+Routes(app)
 
-app.listen(port);
+app.listen(port)
 
-console.log("linkz API server started on port " + port);
+console.log("linkz API server started on port " + port)
