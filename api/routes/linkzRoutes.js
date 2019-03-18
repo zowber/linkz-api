@@ -3,9 +3,9 @@
 module.exports = function(app) {
   var linkz = require("../controllers/linkzController")
 
-  app.route("/linkz/getLinkzByLabel/:name").get(linkz.get_linkz_by_label)
+  //app.route("/linkz/getLinkzByLabel/:name").get(linkz.get_linkz_by_label)
 
-  app.route("/linkz/getPageTitle/:url").get(linkz.get_page_title)
+  //app.route("/linkz/getPageTitle/:url").get(linkz.get_page_title)
 
   app
     .route("/linkz")
