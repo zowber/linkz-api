@@ -64,3 +64,29 @@ exports.get_linkz_by_label = function(req, res) {
     res.json(link)
   })
 }
+
+var Curl = require("node-libcurl").Curl
+
+exports.get_page_title = function(req, res) {
+  console.log("Getting a page title for " + req.params.url)
+
+  var curl = new Curl()
+
+  curl.setOpt("URL", req.params.url)
+  curl.setOpt("FOLLOWLOCATION", true)
+
+  curl.on("end", function(statusCode, body, headers) {
+    //console.log("Status: " + statusCode)
+    //console.log("Headers: " + Headers)
+    console.log(headers)
+    var parseTitle = function(body) {
+      var regex = new RegExp("<title>(.*?)</title>", "i")
+      return body.match(regex)[1]
+    }
+    res.send(parseTitle(body))
+    this.close()
+  })
+
+  curl.on("error", curl.close.bind(curl))
+  curl.perform()
+}

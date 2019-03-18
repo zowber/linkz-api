@@ -18,7 +18,8 @@ mongoose.connect(
     "@" +
     process.env.DB_HOST +
     "/" +
-    process.env.DB_NAME
+    process.env.DB_NAME,
+  { useNewUrlParser: true }
 )
 
 app.use(bodyParser.urlencoded({ extended: true }))
