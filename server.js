@@ -5,7 +5,7 @@ var express = require("express"),
   Link = require("./api/models/linkModel");
   bodyParser = require("body-parser");
   
-  require("dotenv").config();
+require("dotenv").config();
 
 mongoose.Promise = global.Promise;
 mongoose.connect(
@@ -39,4 +39,4 @@ routes(app);
 
 app.listen(port);
 
-console.log("linkz API server started on port " + port);
+console.log("Linkz API server started on port " + port);

@@ -32,7 +32,7 @@ exports.read_link = function(req, res) {
 };
 
 exports.update_link = function(req, res) {
-	console.log('Updating' + req.params.linkId);
+	console.log('Updating ' + req.params.linkId);
 	Link.findOneAndUpdate({ _id: req.params.linkId }, req.body, {new: true}, function(err, link) {
 		if (err)
 			res.send(err);

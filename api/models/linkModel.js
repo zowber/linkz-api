@@ -12,7 +12,7 @@ var LinkSchema = new Schema({
 		required: 'A url is required'
 	},
 	labels: {
-		type: [{ id: Number, name: String}]
+		type: [{ id: Number, name: String }]
 	},
 	Created_date: {
 		type: Date,
