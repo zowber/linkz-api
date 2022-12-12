@@ -7,6 +7,7 @@ var express = require("express"),
   
 require("dotenv").config();
 
+mongoose.set('strictQuery', true);
 mongoose.Promise = global.Promise;
 mongoose.connect(
   "mongodb+srv://" +
@@ -18,7 +19,6 @@ mongoose.connect(
     "/" +
     process.env.DB_NAME
 );
-
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
